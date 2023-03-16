@@ -1,0 +1,47 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary w-100" (click)="addclick()"
+ data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" data-keyboard="false">
+    Add Employee
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">{{moadaltitle}}</h1>
+          <button type="button" class="btn-close" (click)="closeclick()" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <app-add-edit-emp [dep]="dep" *ngIf="activate"></app-add-edit-emp>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Employee_Id</th>
+            <th>Employee_Name</th>
+            <th>Dataofjoin</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of DepartementList">
+            <td>{{item.Employee_Id}}</td>
+            <td>{{item.Employee_Name}}</td>
+            <td>{{item.Dataofjoin}}</td>
+            <td>
+              <button type="button" class="btn btn-info" (click)="Editclick(item)"
+              data-bs-toggle="modal" data-bs-target="#exampleModal" data-backdrop="static" data-keyboard="false">Edite</button>
+            </td>
+            <td>
+                <button class="btn btn-info" (click)="DeleteDep(item.Employee_Id)" type="button">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
